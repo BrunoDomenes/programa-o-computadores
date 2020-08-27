@@ -16,6 +16,7 @@ function exe9(num){ //supondo num 6
             soma = soma + divisor
         }
     }
+    //VERSÃO ALTERNATIVA
    // var soma = 0
    // for(var divisor=1; divisor >=num; divisor++){ //divisor começa em 1 e vai até 6
      //   if (num % divisor == 0){
