@@ -24,7 +24,7 @@ while (numero >= 0)
 function calculaMedia(vet){
     var soma =0
     for(var i=0; i < vet.lenght;i++){
-        soma = soma + vet{i}
+        soma = soma + vet[i]
     }
     console.log(`A media é ${soma/vet.lenght}`)
 }
