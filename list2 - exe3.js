@@ -51,15 +51,33 @@ function calcularMedia(vet){//vet vai apontar para vetor
 }
 
 function calcularMaiorIdade(vet){//vet vai apontar para vetor
-    let maiorIdade = vet[0].idade]
+    let maiorIdade = vet[0].idade]//assume que o primeiro habitante tem a maior idade
     for(let i=1; i < vet.length; i++){
-        if (vet[i].idade > maiorIdade)
+        if (vet[i].idade > maiorIdade){
+            maiorIdade = vet[i].idade //atualiza maior idade
+        }
     }
     console.log(`entrou na função calcular maior idade`)
 }
+
 function calcularQtdade(vet){//vet vai apontar para vetor
-    console.log(`entrou na função calcular quantidade`)
+    let qtde = 0
+    for(let i =0;i<vet.length;i++){
+    if ((vet[i].sexo == "F") && (vet[i].idade >=20) && (vet[i].idade >=45))
+    ||
+    ((vet[i].olhos == "A") && (vet[i].altura == < 1.70)))
+        qtde++
+    }
+
+    console.log(`A qtde é de ${qtde}`)
 }
+
 function calcularPercentual(vet){//vet vai apontar para vetor
-    console.log(`entrou na função calcular percentual`)
+    let conta = 0
+    for(let i=1; i < vet.length; i++){
+        if (vet [i].sexo == "M"){
+            conta++ //atualiza maior idade
+        }
+    }
+    console.log(`O percentual de homens é ${(conta/vet.length)*100}`)
 }
