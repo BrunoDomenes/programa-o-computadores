@@ -4,6 +4,8 @@ function chefe(){
 
     //vetor de escopo local
     let vendedores = []
+    let vendas = []
+    let opcao 
     do{
         let opcao = Number(prompt(`Escolha \n [1]. cadastraVendedor \n [2]. cadastraVenda \n [3]. Sair`))
         switch(opcao) {
