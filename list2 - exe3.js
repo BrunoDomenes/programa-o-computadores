@@ -1,83 +1,87 @@
-chefe()
+chefe ()
 
 function chefe(){
-    //nao mais vamos declarar variaveis usando a palavra chafe var (escopo global)
-    //a partir de agora vamos declarar usando let (escopo local)
-    let vetor = []// este vetor vai existir apenas dentro dessa função
-    do{ 
+    let vetor = []
 
-        var opcao = Number(prompt(`digite \n [1]. entrada \n [2]. relat1 \n [3]. relat2 \n [4]. relat3 \n [5]. relat4 \n [6]. saida \n [7] `))
+    do{
+        let opcao = Number(prompt(`Escolha uma das opções: \n [1] Cadastrar \n [2] Média de idade das pessoas com olhos castanhos e altura superior a 1.60 \n [3] A maior idade entre os habitantes \n [4]Qtde de indv. do sexo feminino c/ id 15-45 ou que tenham olhos verdes e altura inderior a 1.70 \n [5] O percentual de homens \n [6]`))
         switch(opcao){
-            case 1: entrada(vetor)//estamos passando uma referencia na memoria do vetor
-            case 2: calcularMedia(vetor)
+            case 1: cadastra(vetor)
             break
-            case 3: calcularMaiorIdade(vetor)
-            break
-            case 4: calcularQtdade(vetor)
-            break
-            case 5: calcularPercentual(vetor)
-            break
-            case 6: console.log(`obrigado por utilizar nosso programa`)
-            break
-            default: console.log(`Opção invalida, tente novamente`)
+            case 2: mediaIdades(vetor)
+                    break
+        
+            case 3: maiorIdade(vetor)
+                    break
+        
+            case 4: qtdeIndv(vetor)
+                    break
+        
+            case 5: porcentagem(vetor)
+                    break
+        
+            default: console.log(`Opção inválida`)
+            } 
+        }
+        while(opcao != 6)
+}
+function cadastra(vet){
+    //entrada de dados, atribuindo em um objeto
+    //no singular
+    let habitante = new Object()
+    habitante.sexo = prompt("Informe [F] para feminino e [M] para masculino")
+    habitante.altura = Number(prompt("Informe a altura"))
+    habitante.idade = Number(prompt("Informe a idade"))
+    habitante.cor = prompt("Informe a cor dos olhos, sendo: [A] Azuis, [V] Verdes e [C] castanhos")
+    
+    //coloco habitante em um conjunto de habitanteS
+    vet.push(habitante)//obs que na verdade vai inserir no vetor
+}
+
+//Média de idade das pessoas com olhos castanhos e altura superior a 1.60
+function mediaIdades(vet){
+    let soma = 0 
+    for(let i = 0; i < vet.length; i++){
+        if ((vet[i].cor == 'C') && (vet[i].altura >= 1.60)){
+            soma = soma + vet[i].idade
+            console.log(`A Média de idade das pessoas com olhos castanhos e altura superior a 1.60 é = ${soma/vet.length}`)
         }
     }
-    while (opcao != 6)
 }
 
-function entrada(vet){//vet vai apontar para vetor
-      console.log(`entrou na função entrada`)
-      //cria objeto
-      let objeto = new Object()
-      objeto.sexo = prompt(`Informe M para masculino e F para feminino`).toUpperCase()// converte para letra maiuscula
-      objeto.altura = Number(prompt(`informe a altura`))
-      objeto.idade = Number(prompt(`informe a idade`))
-      objeto.olhos = prompt(`informe A(azuis) V(verde) C(castanho)`).toUpperCase()//converte para letra maiuscula
-      //vamos inserir em vetor e nao em vet
-      vet.push(objeto)
-      console.log(`Habitante inserido com sucesso`)
+//A maior idade entre os habitantes
+ //sempre percorre o vetor
+function maiorIdade(vet){
+    let maiorId = vet[0].idade //supomos que a maior idade seja a primeira, (posição [0] do nosso vetor)
+    for(let i = 0; i < vet.length; i++){
+        if (vet[i].idade > maiorId){
+            maiorId = vet[i].idade
+            console.log(`Maior idade: ${maiorId} `)
+        }
+    }
 }
 
-function calcularMedia(vet){//vet vai apontar para vetor
-    console.log(`entrou na função calcular media`)
-    let soma = 0
+//Qtde de indv. do sexo feminino c/ id 15-45 ou que tenham olhos verdes e altura inderior a 1.70
+function qtdeIndv(vet){
     let qtde = 0
-    for(let i=0;i<vet.length;i++){
-        if ((vet[i].olhos == "C") && (vet[i].altura > 1.60))
-        soma = soma + vet [i].idade
-        qtde++
-    }
-    console.log(`A media da idade é ${soma/qtde}`)
-}
-
-function calcularMaiorIdade(vet){//vet vai apontar para vetor
-    let maiorIdade = vet[0].idade]//assume que o primeiro habitante tem a maior idade
-    for(let i=1; i < vet.length; i++){
-        if (vet[i].idade > maiorIdade){
-            maiorIdade = vet[i].idade //atualiza maior idade
+    for(let i = 0; i < vet.length; i++){
+        if (((vet[i].sexo == 'F') && (vet[i].idade >= 15) && (vet[i].idade <= 45))
+        || 
+        ((vet[i].cor == 'A') && (vet[i].altura == 1.70))){
+            qtde ++
         }
+        console.log(`${qtde} possuem do sexo feminino c/ id 15-45 ou que tenham olhos verdes e altura inderior a 1.70 `)
     }
-    console.log(`entrou na função calcular maior idade`)
 }
 
-function calcularQtdade(vet){//vet vai apontar para vetor
-    let qtde = 0
-    for(let i =0;i<vet.length;i++){
-    if ((vet[i].sexo == "F") && (vet[i].idade >=20) && (vet[i].idade >=45))
-    ||
-    ((vet[i].olhos == "A") && (vet[i].altura == < 1.70)))
-        qtde++
-    }
-
-    console.log(`A qtde é de ${qtde}`)
-}
-
-function calcularPercentual(vet){//vet vai apontar para vetor
-    let conta = 0
-    for(let i=1; i < vet.length; i++){
-        if (vet [i].sexo == "M"){
-            conta++ //atualiza maior idade
+//Porcentagem homens
+function porcentagem(vet){
+    let qtdeM = 0
+    for(let i = 0; i < vet.length; i++){
+        if (vet[i].sexo == 'M') {
+            qtdeM ++
         }
+        console.log(`${(qtdeM/vet.length) * 100} possuem do sexo feminino c/ id 15-45 ou que tenham olhos verdes e altura inderior a 1.70 `)
     }
-    console.log(`O percentual de homens é ${(conta/vet.length)*100}`)
 }
+
